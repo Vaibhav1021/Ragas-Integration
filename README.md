@@ -1,2 +1,106 @@
 # Ragas-Integration
- 
+
+## Overview
+This project evaluates conversational logs using RAGAS metrics:
+- **Faithfulness** – Measures how well the generated answer aligns with the retrieved context.
+- **Answer Relevancy** – Evaluates how relevant the generated answer is to the user query.
+- **Context Precision** – Checks if the retrieved context is precise and appropriate.
+
+The expected output is a JSON file with the following structure:
+```json
+[
+  {
+    "id": "item-001",
+    "faithfulness": 0.92,
+    "answer_relevancy": 0.88,
+    "context_precision": 0.95
+  },
+  {
+    "id": "item-002",
+    "faithfulness": 0.84,
+    "answer_relevancy": 0.79,
+    "context_precision": 0.87
+  }
+]
+
+Approach
+Input Data
+The script reads input conversational logs from data/sample_log.json.
+Each entry contains:
+
+id – unique identifier
+
+items.input.system – context
+
+items.input.user – query
+
+items.expected_output – expected answer
+
+RAGAS Integration
+Normally, ragas uses a language model (LLM) like OpenAI GPT to evaluate metrics.
+However, to avoid API costs for this demonstration, a mock evaluation mode is implemented, generating realistic placeholder scores for:
+
+faithfulness
+
+answer_relevancy
+
+context_precision
+
+Output
+Results are saved in output/ragas_scores.json with the correct schema.
+
+API-Ready
+The code is structured so it can easily switch to real LLM evaluation by integrating OpenAI GPT or any LangChain-supported model with ragas.evaluate().
+
+Libraries Used
+json – for reading/writing JSON files
+
+os – for file path handling
+
+random – to simulate realistic scores
+
+For real evaluation:
+
+ragas
+
+langchain-openai
+
+These are not required for the mock version.
+
+Assumptions and Simplifications
+This version uses mock scores instead of actual LLM API calls to avoid external API billing.
+
+The mock scores are generated within realistic ranges (0.70–0.95).
+
+The structure fully matches what would be produced by a real RAGAS evaluation.
+
+### How to Run
+
+- Clone the repository:
+git clone <your-repo-link>.git
+cd ragas_assignment
+
+- (Optional) Create a virtual environment:
+python -m venv venv
+source venv/bin/activate    # Linux/Mac
+venv\Scripts\activate.bat   # Windows
+
+- Run the script:
+python ragas_integration.py
+
+- Check the output:
+cat output/ragas_scores.json
+
+### Switching to Real Evaluation
+#### To enable actual LLM evaluation:
+
+- Install required libraries:
+pip install ragas langchain-openai
+
+- Set your OpenAI API key:
+export OPENAI_API_KEY="your-key"
+
+Replace the mock_ragas_scores() call with:
+
+from ragas import evaluate
+result = evaluate(dataset, metrics=[faithfulness, answer_relevancy, context_precision], llm=ragas_llm)
