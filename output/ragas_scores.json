@@ -1,0 +1,14 @@
+[
+  {
+    "id": "item-001",
+    "faithfulness": 0.94,
+    "answer_relevancy": 0.81,
+    "context_precision": 0.95
+  },
+  {
+    "id": "item-002",
+    "faithfulness": 0.88,
+    "answer_relevancy": 0.72,
+    "context_precision": 0.95
+  }
+]

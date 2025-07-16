@@ -1,0 +1,23 @@
+[
+    {
+      "id": "item-001",
+      "items": {
+        "input": {
+          "system": "You are a helpful assistant providing information about space missions.",
+          "user": "Tell me about Apollo 11."
+        },
+        "expected_output": "Apollo 11 was the first mission to land humans on the Moon in 1969. Neil Armstrong and Buzz Aldrin walked on the lunar surface."
+      }
+    },
+    {
+      "id": "item-002",
+      "items": {
+        "input": {
+          "system": "You are an expert in world history.",
+          "user": "Who was the first President of the USA?"
+        },
+        "expected_output": "The first President of the USA was George Washington, serving from 1789 to 1797."
+      }
+    }
+  ]
+  
