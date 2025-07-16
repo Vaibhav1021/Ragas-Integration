@@ -112,5 +112,4 @@ result = evaluate(dataset, metrics=[faithfulness, answer_relevancy, context_prec
 
 -----------------------
 #### Author  
-#### This solution is implemented as part of an internship assignment.  
 #### The mock mode was intentionally chosen to demonstrate the approach without incurring API costs.
